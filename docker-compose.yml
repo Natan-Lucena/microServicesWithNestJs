@@ -26,6 +26,12 @@ services:
     volumes:
       - read-db-data:/var/lib/mysql
 
+  inMemoryDb:
+    image: redis:latest
+    restart: always
+    ports:
+      - '6379:6379'
+
 volumes:
   write-db-data:
   read-db-data:
