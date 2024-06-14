@@ -1,5 +1,5 @@
 import { Global, Module } from '@nestjs/common';
-import createClient from 'ioredis';
+import { Redis } from 'ioredis';
 import 'dotenv/config';
 @Global()
 @Module({
@@ -9,7 +9,7 @@ import 'dotenv/config';
       useFactory: () => {
         const host: string = process.env.REDIS_HOST;
         const port: string = process.env.REDIS_PORT;
-        const client = new createClient({
+        const client = new Redis({
           host,
           port: parseInt(port, 10),
         });
