@@ -19,7 +19,7 @@ model User {
   name      String
   email     String   @unique
   password  String
-  active    Boolean
+  active    Boolean  @default(false)
   createdAt DateTime @default(now())
 
   products Product[]
