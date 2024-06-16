@@ -32,7 +32,9 @@ export class SignUpUserService {
     await this.mailerProvider.sendEmail({
       to: user.email,
       subject: 'Welcome to our platform',
-      body: 'Welcome to our platform, click here to login: http://localhost:3000/login',
+      body:
+        'Welcome to our platform, click here to login: http://localhost:3000/active-user/' +
+        dto.email,
     });
   }
 }

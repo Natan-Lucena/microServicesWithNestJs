@@ -32,4 +32,12 @@ export class UserRepositoryService {
     await this.redisClient.set('user ' + user.email, JSON.stringify(user));
     return user;
   }
+  async activeUserByEmail(email: string) {
+    const user = await this.writePrisma.user.update({
+      where: { email },
+      data: { active: true },
+    });
+    await this.redisClient.del('user ' + email);
+    await this.redisClient.set('user ' + user.email, JSON.stringify(user));
+  }
 }
