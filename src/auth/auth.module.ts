@@ -7,16 +7,25 @@ import { MailerProviderService } from 'src/providers/services/mailer-provider/ma
 import { SignUpUserController } from './controllers/sign-up-user/sign-up-user.controller';
 import { ActiveUserAccountService } from './services/active-user-account/active-user-account.service';
 import { ActiveUserAccountController } from './controllers/active-user-account/active-user-account.controller';
+import { SignInUserService } from './services/sign-in-user/sign-in-user.service';
+import { SignInUserController } from './controllers/sign-in-user/sign-in-user.controller';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   providers: [
+    JwtService,
     SignUpUserService,
     ReadPrismaService,
     WritePrismaService,
     UserRepositoryService,
     MailerProviderService,
     ActiveUserAccountService,
+    SignInUserService,
   ],
-  controllers: [SignUpUserController, ActiveUserAccountController],
+  controllers: [
+    SignUpUserController,
+    ActiveUserAccountController,
+    SignInUserController,
+  ],
 })
 export class AuthModule {}
