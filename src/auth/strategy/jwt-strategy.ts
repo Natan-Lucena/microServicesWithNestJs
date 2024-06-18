@@ -5,7 +5,7 @@ import 'dotenv/config';
 import { UserRepositoryService } from 'src/providers/repositories/user-repository/user-repository.service';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   constructor(private userRepository: UserRepositoryService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
