@@ -6,6 +6,8 @@ import { ReadPrismaService } from 'src/prisma/read-prisma.service';
 import { UserRepositoryService } from 'src/providers/repositories/user-repository/user-repository.service';
 import { ProductRepositoryService } from 'src/providers/repositories/product-repository/product-repository.service';
 import { JwtStrategy } from 'src/auth/strategy/jwt-strategy';
+import { ReceiveProductImageService } from './services/receive-product-image/receive-product-image.service';
+import { ReceiveProductImageController } from './controllers/receive-product-image/receive-product-image.controller';
 
 @Module({
   providers: [
@@ -15,7 +17,8 @@ import { JwtStrategy } from 'src/auth/strategy/jwt-strategy';
     UserRepositoryService,
     ProductRepositoryService,
     CreateProductService,
+    ReceiveProductImageService,
   ],
-  controllers: [CreateProductController],
+  controllers: [CreateProductController, ReceiveProductImageController],
 })
 export class ProductsModule {}

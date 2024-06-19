@@ -23,7 +23,7 @@ export class CreateProductService {
     if (!user) {
       throw new UserDoesNotExistsException();
     }
-    return this.productRepositoryService.createProduct({
+    return await this.productRepositoryService.createProduct({
       name: dto.name,
       price: dto.price,
       userId: user.id,
