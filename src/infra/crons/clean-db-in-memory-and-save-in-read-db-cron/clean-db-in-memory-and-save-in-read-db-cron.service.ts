@@ -33,9 +33,9 @@ export class CleanDbInMemoryAndSaveInReadDbCronService {
       await this.readPrisma.product.deleteMany();
       await this.readPrisma.user.deleteMany();
 
-      await this.readPrisma.image.createMany({ data: images });
-      await this.readPrisma.product.createMany({ data: products });
       await this.readPrisma.user.createMany({ data: users });
+      await this.readPrisma.product.createMany({ data: products });
+      await this.readPrisma.image.createMany({ data: images });
 
       console.log('Data transferred from write DB to read DB');
     } catch (error) {
