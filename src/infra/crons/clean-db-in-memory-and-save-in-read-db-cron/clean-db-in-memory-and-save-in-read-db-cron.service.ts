@@ -12,7 +12,7 @@ export class CleanDbInMemoryAndSaveInReadDbCronService {
     private readonly writePrisma: WritePrismaService,
   ) {}
 
-  @Cron('1 1 0 * * *')
+  @Cron('1 1 12 * * *')
   async execute() {
     try {
       await this.saveWriteDbToReadDb();
@@ -29,13 +29,17 @@ export class CleanDbInMemoryAndSaveInReadDbCronService {
       const products = await this.writePrisma.product.findMany();
       const users = await this.writePrisma.user.findMany();
 
-      await this.readPrisma.image.deleteMany();
       await this.readPrisma.product.deleteMany();
+      await this.readPrisma.image.deleteMany();
       await this.readPrisma.user.deleteMany();
 
-      await this.readPrisma.image.createMany({ data: images });
-      await this.readPrisma.product.createMany({ data: products });
+      await this.writePrisma.image.deleteMany();
+      await this.writePrisma.product.deleteMany();
+      await this.writePrisma.user.deleteMany();
+
       await this.readPrisma.user.createMany({ data: users });
+      await this.readPrisma.product.createMany({ data: products });
+      await this.readPrisma.image.createMany({ data: images });
 
       console.log('Data transferred from write DB to read DB');
     } catch (error) {
