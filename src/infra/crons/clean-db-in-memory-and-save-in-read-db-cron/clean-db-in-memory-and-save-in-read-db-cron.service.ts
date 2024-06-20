@@ -33,10 +33,6 @@ export class CleanDbInMemoryAndSaveInReadDbCronService {
       await this.readPrisma.image.deleteMany();
       await this.readPrisma.user.deleteMany();
 
-      await this.writePrisma.image.deleteMany();
-      await this.writePrisma.product.deleteMany();
-      await this.writePrisma.user.deleteMany();
-
       await this.readPrisma.user.createMany({ data: users });
       await this.readPrisma.product.createMany({ data: products });
       await this.readPrisma.image.createMany({ data: images });
