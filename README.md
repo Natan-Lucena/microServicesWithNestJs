@@ -30,6 +30,9 @@
 
 ```bash
 $ npm install
+$ docker-compose up -D
+$ npx prisma migrate deploy --schema=prisma/write.schema.prisma
+$ npx prisma migrate deploy --schema=prisma/read.schema.prisma
 ```
 
 ## Running the app
