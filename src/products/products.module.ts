@@ -8,6 +8,8 @@ import { ProductRepositoryService } from 'src/providers/repositories/product-rep
 import { JwtStrategy } from 'src/auth/strategy/jwt-strategy';
 import { ReceiveProductImageService } from './services/receive-product-image/receive-product-image.service';
 import { ReceiveProductImageController } from './controllers/receive-product-image/receive-product-image.controller';
+import { GetUserProductsService } from './services/get-user-products/get-user-products.service';
+import { GetUserProductsController } from './controllers/get-user-products/get-user-products.controller';
 
 @Module({
   providers: [
@@ -18,7 +20,8 @@ import { ReceiveProductImageController } from './controllers/receive-product-ima
     ProductRepositoryService,
     CreateProductService,
     ReceiveProductImageService,
+    GetUserProductsService,
   ],
-  controllers: [CreateProductController, ReceiveProductImageController],
+  controllers: [CreateProductController, ReceiveProductImageController, GetUserProductsController],
 })
 export class ProductsModule {}
