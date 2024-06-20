@@ -12,7 +12,7 @@ export class CleanDbInMemoryAndSaveInReadDbCronService {
     private readonly writePrisma: WritePrismaService,
   ) {}
 
-  @Cron('1 1 12 * * *')
+  @Cron('1 1 0 * * *')
   async execute() {
     try {
       await this.saveWriteDbToReadDb();
@@ -29,8 +29,8 @@ export class CleanDbInMemoryAndSaveInReadDbCronService {
       const products = await this.writePrisma.product.findMany();
       const users = await this.writePrisma.user.findMany();
 
-      await this.readPrisma.product.deleteMany();
       await this.readPrisma.image.deleteMany();
+      await this.readPrisma.product.deleteMany();
       await this.readPrisma.user.deleteMany();
 
       await this.readPrisma.user.createMany({ data: users });
