@@ -6,7 +6,13 @@ import { ProductsModule } from './products/products.module';
 import { InfraModule } from './infra/infra.module';
 
 @Module({
-  imports: [AuthModule, RedisModule, ProvidersModule, ProductsModule, InfraModule],
+  imports: [
+    AuthModule,
+    RedisModule,
+    ProvidersModule,
+    ProductsModule,
+    InfraModule,
+  ],
   controllers: [],
   providers: [],
 })
