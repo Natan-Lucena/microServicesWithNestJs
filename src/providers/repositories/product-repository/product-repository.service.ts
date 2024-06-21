@@ -1,6 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Redis } from 'ioredis';
-import { Product } from 'prisma/generated/read/client';
+
+import { Image, Product } from 'prisma/generated/read/client';
+
 import { ReadPrismaService } from 'src/prisma/read-prisma.service';
 import { WritePrismaService } from 'src/prisma/write-prisma.service';
 
@@ -45,11 +47,23 @@ export class ProductRepositoryService {
   async getProductsByUserId(userId: number) {
     const userProducts = await this.redisClient.get('userProducts ' + userId);
     if (userProducts) {
+      const productsWithImages = [];
       const productsInCache: Product[] = JSON.parse(userProducts);
-      return productsInCache;
+      for (const product of productsInCache) {
+        const images = await this.redisClient.get(
+          'productImages ' + product.id,
+        );
+        const imagesInCache: Image[] = JSON.parse(images);
+        productsWithImages.push({
+          ...product,
+          images: imagesInCache,
+        });
+        return productsWithImages;
+      }
     }
     const products = await this.readPrisma.product.findMany({
       where: { userId },
+      select: { images: true, price: true, name: true, createdAt: true },
     });
     await this.redisClient.set(
       'userProducts ' + userId,
