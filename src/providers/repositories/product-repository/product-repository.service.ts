@@ -1,6 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Redis } from 'ioredis';
+
 import { Image, Product } from 'prisma/generated/read/client';
+
 import { ReadPrismaService } from 'src/prisma/read-prisma.service';
 import { WritePrismaService } from 'src/prisma/write-prisma.service';
 
