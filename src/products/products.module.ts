@@ -10,6 +10,10 @@ import { ReceiveProductImageService } from './services/receive-product-image/rec
 import { ReceiveProductImageController } from './controllers/receive-product-image/receive-product-image.controller';
 import { GetUserProductsService } from './services/get-user-products/get-user-products.service';
 import { GetUserProductsController } from './controllers/get-user-products/get-user-products.controller';
+import { UpdateProductByIdService } from './services/update-product-by-id/update-product-by-id.service';
+import { UpdateProductByIdController } from './controllers/update-product-by-id/update-product-by-id.controller';
+import { DeleteProductByIdService } from './services/delete-product-by-id/delete-product-by-id.service';
+import { DeleteProductByIdController } from './controllers/delete-product-by-id/delete-product-by-id.controller';
 
 @Module({
   providers: [
@@ -21,7 +25,9 @@ import { GetUserProductsController } from './controllers/get-user-products/get-u
     CreateProductService,
     ReceiveProductImageService,
     GetUserProductsService,
+    UpdateProductByIdService,
+    DeleteProductByIdService,
   ],
-  controllers: [CreateProductController, ReceiveProductImageController, GetUserProductsController],
+  controllers: [CreateProductController, ReceiveProductImageController, GetUserProductsController, UpdateProductByIdController, DeleteProductByIdController],
 })
 export class ProductsModule {}
