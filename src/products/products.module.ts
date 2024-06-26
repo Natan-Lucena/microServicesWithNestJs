@@ -31,6 +31,13 @@ import { DeleteImageByIdController } from './controllers/delete-image-by-id/dele
     DeleteProductByIdService,
     DeleteImageByIdService,
   ],
-  controllers: [CreateProductController, ReceiveProductImageController, GetUserProductsController, UpdateProductByIdController, DeleteProductByIdController, DeleteImageByIdController],
+  controllers: [
+    CreateProductController,
+    ReceiveProductImageController,
+    GetUserProductsController,
+    UpdateProductByIdController,
+    DeleteProductByIdController,
+    DeleteImageByIdController,
+  ],
 })
 export class ProductsModule {}
