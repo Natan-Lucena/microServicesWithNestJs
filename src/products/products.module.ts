@@ -14,6 +14,8 @@ import { UpdateProductByIdService } from './services/update-product-by-id/update
 import { UpdateProductByIdController } from './controllers/update-product-by-id/update-product-by-id.controller';
 import { DeleteProductByIdService } from './services/delete-product-by-id/delete-product-by-id.service';
 import { DeleteProductByIdController } from './controllers/delete-product-by-id/delete-product-by-id.controller';
+import { DeleteImageByIdService } from './services/delete-image-by-id/delete-image-by-id.service';
+import { DeleteImageByIdController } from './controllers/delete-image-by-id/delete-image-by-id.controller';
 
 @Module({
   providers: [
@@ -27,7 +29,8 @@ import { DeleteProductByIdController } from './controllers/delete-product-by-id/
     GetUserProductsService,
     UpdateProductByIdService,
     DeleteProductByIdService,
+    DeleteImageByIdService,
   ],
-  controllers: [CreateProductController, ReceiveProductImageController, GetUserProductsController, UpdateProductByIdController, DeleteProductByIdController],
+  controllers: [CreateProductController, ReceiveProductImageController, GetUserProductsController, UpdateProductByIdController, DeleteProductByIdController, DeleteImageByIdController],
 })
 export class ProductsModule {}
